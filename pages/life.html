@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="N PROJECT - Life OS">
+    <title>Life OS — N PROJECT</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/pariabel.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/komponen.css">
+    <link rel="stylesheet" href="../css/napigasi.css">
+    <link rel="stylesheet" href="../css/responsiv.css">
+    <link rel="stylesheet" href="../css/life.css">
+</head>
+
+<body class="life-page">
+    <div class="app">
+
+        <header class="site-header life-header">
+            <div class="container">
+                <div class="brand">
+                    <a href="../index.html">
+                        <span class="brand-name">N PROJECT</span>
+                        <span class="brand-subtitle">LIFE OS</span>
+                    </a>
+                </div>
+
+                <div class="life-header-status">
+                    <span class="status-indicator" aria-hidden="true"></span>
+                    <span>ONLINE</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="container life-container">
+
+                <section class="hero-section life-hero life-reveal" style="--life-delay: 0ms">
+                    <p class="hero-label">LIFE OS</p>
+                    <h1 class="hero-title">
+                        Organize your
+                        <span>digital life.</span>
+                    </h1>
+                    <p class="hero-description">
+                        Tasks, progress, and focus in one calm workspace.
+                    </p>
+
+                    <div class="life-date-row">
+                        <span class="life-today-dot" aria-hidden="true"></span>
+                        <span id="lifeTodayLabel">—</span>
+                    </div>
+                </section>
+
+                <section class="life-overview life-reveal" style="--life-delay: 70ms" aria-label="Daily overview">
+                    <div class="life-overview-main">
+                        <div>
+                            <span class="section-label">TODAY</span>
+                            <h2 id="lifeGreeting" class="section-title">Ready when you are.</h2>
+                            <p id="lifeOverviewText" class="life-muted">Add a task to start your day.</p>
+                        </div>
+
+                        <div class="life-progress-ring" aria-label="Today's task progress">
+                            <span id="lifeProgressRingValue">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="life-progress-track" aria-hidden="true">
+                        <span id="lifeProgressBar"></span>
+                    </div>
+                </section>
+
+                <section class="life-stats-grid life-reveal" style="--life-delay: 140ms" aria-label="Life OS stats">
+                    <article class="ui-card life-stat-card">
+                        <span class="ui-card-label">TODAY</span>
+                        <strong id="lifeTodayCount">0</strong>
+                        <span>tasks</span>
+                    </article>
+
+                    <article class="ui-card life-stat-card">
+                        <span class="ui-card-label">DONE</span>
+                        <strong id="lifeDoneCount">0</strong>
+                        <span>completed</span>
+                    </article>
+
+                    <article class="ui-card life-stat-card">
+                        <span class="ui-card-label">ACTIVE</span>
+                        <strong id="lifeActiveCount">0</strong>
+                        <span>remaining</span>
+                    </article>
+
+                    <article class="ui-card life-stat-card">
+                        <span class="ui-card-label">ALL TIME</span>
+                        <strong id="lifeTotalCount">0</strong>
+                        <span>tasks</span>
+                    </article>
+                </section>
+
+                <section class="life-quick-actions life-reveal" style="--life-delay: 210ms">
+                    <div class="section-heading">
+                        <p class="section-label">QUICK ACTIONS</p>
+                        <h2 class="section-title">Move fast.</h2>
+                    </div>
+
+                    <div class="life-action-grid">
+                        <button type="button" class="life-action primary" id="lifeFocusButton">
+                            <span class="life-action-icon">◉</span>
+                            <span>
+                                <strong>FOCUS</strong>
+                                <small>Start one task</small>
+                            </span>
+                        </button>
+
+                        <a class="life-action" href="../index.html#pklJournalSection">
+                            <span class="life-action-icon">✎</span>
+                            <span>
+                                <strong>JOURNAL</strong>
+                                <small>Open PKL journal</small>
+                            </span>
+                        </a>
+
+                        <button type="button" class="life-action" id="lifeScrollTaskButton">
+                            <span class="life-action-icon">＋</span>
+                            <span>
+                                <strong>NEW TASK</strong>
+                                <small>Add something useful</small>
+                            </span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="life-task-section life-reveal" style="--life-delay: 280ms" id="lifeTasksSection">
+                    <div class="section-heading life-task-heading">
+                        <div>
+                            <p class="section-label">TASKS</p>
+                            <h2 class="section-title">Today's work.</h2>
+                        </div>
+                        <span class="life-task-count" id="lifeTaskCountBadge">0</span>
+                    </div>
+
+                    <form class="life-task-form" id="lifeTaskForm" autocomplete="off">
+                        <label class="sr-only" for="lifeTaskInput">Task</label>
+                        <input
+                            id="lifeTaskInput"
+                            name="task"
+                            type="text"
+                            maxlength="100"
+                            placeholder="What needs to get done?"
+                            required
+                        >
+
+                        <label class="sr-only" for="lifeTaskPriority">Priority</label>
+                        <select id="lifeTaskPriority" name="priority">
+                            <option value="normal">NORMAL</option>
+                            <option value="high">HIGH</option>
+                            <option value="low">LOW</option>
+                        </select>
+
+                        <button type="submit" class="life-submit-button" id="lifeSubmitButton">ADD TASK</button>
+                        <button type="button" class="life-cancel-button" id="lifeCancelEdit" hidden>CANCEL</button>
+                    </form>
+
+                    <div class="life-filters" role="tablist" aria-label="Task filter">
+                        <button type="button" class="life-filter active" data-filter="today" role="tab" aria-selected="true">TODAY</button>
+                        <button type="button" class="life-filter" data-filter="active" role="tab" aria-selected="false">ACTIVE</button>
+                        <button type="button" class="life-filter" data-filter="done" role="tab" aria-selected="false">DONE</button>
+                        <button type="button" class="life-filter" data-filter="all" role="tab" aria-selected="false">ALL</button>
+                    </div>
+
+                    <div id="lifeTaskList" class="life-task-list" aria-live="polite"></div>
+                </section>
+
+                <section class="life-note life-reveal" style="--life-delay: 350ms">
+                    <span class="life-note-mark">N</span>
+                    <div>
+                        <strong>Life OS principle</strong>
+                        <p>Small completed things beat a giant list you never touch.</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <nav class="bottom-navigation" aria-label="Main navigation">
+            <a href="../index.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="life.html" class="nav-item">
+                <span class="nav-icon">◉</span>
+                <span class="nav-label">Life</span>
+            </a>
+            <a href="memories.html" class="nav-item">
+                <span class="nav-icon">▣</span>
+                <span class="nav-label">Memory</span>
+            </a>
+            <a href="developer.html" class="nav-item">
+                <span class="nav-icon">&lt;/&gt;</span>
+                <span class="nav-label">Dev</span>
+            </a>
+            <a href="more.html" class="nav-item">
+                <span class="nav-icon">•••</span>
+                <span class="nav-label">More</span>
+            </a>
+        </nav>
+
+        <div class="life-modal" id="lifeConfirmModal" hidden>
+            <div class="life-modal-backdrop" data-close-life-modal></div>
+            <section class="life-modal-card" role="dialog" aria-modal="true" aria-labelledby="lifeModalTitle">
+                <span class="section-label">CONFIRM ACTION</span>
+                <h2 id="lifeModalTitle">Delete this task?</h2>
+                <p id="lifeModalText">This task will be removed from Life OS.</p>
+                <div class="life-modal-actions">
+                    <button type="button" class="life-action" data-close-life-modal>CANCEL</button>
+                    <button type="button" class="life-action danger" id="lifeConfirmDelete">DELETE</button>
+                </div>
+            </section>
+        </div>
+
+        <div class="life-focus" id="lifeFocusPanel" hidden>
+            <div class="life-focus-backdrop" data-close-focus></div>
+            <section class="life-focus-card" role="dialog" aria-modal="true" aria-labelledby="lifeFocusTitle">
+                <div class="life-focus-header">
+                    <span class="section-label">FOCUS MODE</span>
+                    <button type="button" class="life-icon-button" data-close-focus aria-label="Close focus mode">×</button>
+                </div>
+                <p class="life-focus-kicker">ONE THING</p>
+                <h2 id="lifeFocusTitle">Nothing queued.</h2>
+                <p id="lifeFocusMeta">Add an active task first.</p>
+                <div class="life-focus-actions">
+                    <button type="button" class="life-action primary" id="lifeFocusDone">MARK DONE</button>
+                    <button type="button" class="life-action" id="lifeFocusNext">NEXT TASK</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="../js/cloud.js"></script>
+<script src="../js/data.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/skrip.js"></script>
+    <script src="../js/napigasi.js"></script>
+    <script src="../js/life.js"></script>
+</body>
+</html>

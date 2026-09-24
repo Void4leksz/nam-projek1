@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="N PROJECT - Memories">
+    <title>Memories — N PROJECT</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/pariabel.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/komponen.css">
+    <link rel="stylesheet" href="../css/napigasi.css">
+    <link rel="stylesheet" href="../css/responsiv.css">
+    <link rel="stylesheet" href="../css/memories.css">
+</head>
+
+<body>
+    <div class="app">
+        <header class="site-header">
+            <div class="container">
+                <div class="brand">
+                    <a href="../index.html">
+                        <span class="brand-name">N PROJECT</span>
+                        <span class="brand-subtitle">MEMORIES</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="container">
+                <section class="hero-section memories-hero">
+                    <p class="hero-label">MEMORIES</p>
+                    <h1 class="hero-title">Keep the moments <span>worth remembering.</span></h1>
+                    <p class="hero-description">Simpan foto, cerita, dan momen penting dalam satu album digital yang rapi.</p>
+
+                    <div class="memories-actions">
+                        <button class="memories-btn primary" type="button" data-open-add>+ New Memory</button>
+                        <button class="memories-btn" type="button" id="createAlbumButton">＋ New Album</button>
+                    </div>
+                </section>
+
+                <section class="module-section">
+                    <div class="memories-stats" aria-label="Memory statistics">
+                        <article class="memory-stat"><div class="memory-stat-label">Memories</div><div class="memory-stat-value" id="memoryTotal">0</div></article>
+                        <article class="memory-stat"><div class="memory-stat-label">Albums</div><div class="memory-stat-value" id="memoryAlbums">0</div></article>
+                        <article class="memory-stat"><div class="memory-stat-label">Photos</div><div class="memory-stat-value" id="memoryPhotos">0</div></article>
+                        <article class="memory-stat"><div class="memory-stat-label">Latest</div><div class="memory-stat-value" id="memoryLatest">—</div></article>
+                    </div>
+
+                    <div class="section-heading">
+                        <p class="section-label">MEMORY VAULT</p>
+                        <h2 class="section-title">Your moments</h2>
+                    </div>
+
+                    <div class="memories-toolbar">
+                        <div class="memories-search-wrap">
+                            <input id="memorySearch" class="memories-search" type="search" placeholder="Cari memory, album, cerita..." autocomplete="off">
+                        </div>
+                        <div id="memoryFilters" class="memories-filters" aria-label="Memory filters"></div>
+                    </div>
+
+                    <div id="memoriesGrid" class="memories-grid"></div>
+                </section>
+            </div>
+        </main>
+
+        <nav class="bottom-navigation">
+            <a href="../index.html" class="nav-item"><span class="nav-icon">⌂</span><span class="nav-label">Home</span></a>
+            <a href="life.html" class="nav-item"><span class="nav-icon">◉</span><span class="nav-label">Life</span></a>
+            <a href="memories.html" class="nav-item"><span class="nav-icon">▣</span><span class="nav-label">Memory</span></a>
+            <a href="developer.html" class="nav-item"><span class="nav-icon">&lt;/&gt;</span><span class="nav-label">Dev</span></a>
+            <a href="more.html" class="nav-item"><span class="nav-icon">•••</span><span class="nav-label">More</span></a>
+        </nav>
+    </div>
+
+    <!-- CREATE / EDIT -->
+    <div id="memoryFormModal" class="memory-modal" aria-hidden="true">
+        <div class="memory-modal-panel" role="dialog" aria-modal="true" aria-labelledby="memoryModalTitle">
+            <div class="memory-modal-head">
+                <div>
+                    <div id="memoryModalKicker" class="memory-modal-kicker">NEW MEMORY</div>
+                    <h2 id="memoryModalTitle" class="memory-modal-title">Add a memory</h2>
+                </div>
+                <button class="memory-close" type="button" data-close-memory-modal aria-label="Tutup">×</button>
+            </div>
+
+            <form id="memoryForm" class="memory-form">
+                <div class="memory-field">
+                    <label for="memoryTitle">Title</label>
+                    <input id="memoryTitle" type="text" maxlength="80" required placeholder="Contoh: Hari pertama PKL">
+                </div>
+
+                <div class="memory-field">
+                    <label for="memoryDate">Date</label>
+                    <input id="memoryDate" type="date" required>
+                </div>
+
+                <div class="memory-field">
+                    <label for="memoryAlbum">Album</label>
+                    <select id="memoryAlbum"></select>
+                </div>
+
+                <div class="memory-field">
+                    <label for="memoryDescription">Description</label>
+                    <textarea id="memoryDescription" maxlength="1000" placeholder="Ceritakan sedikit tentang momen ini..."></textarea>
+                </div>
+
+                <div class="memory-field">
+                    <label for="memoryFile">Photo</label>
+                    <input id="memoryFile" type="file" accept="image/*">
+                    <div class="memory-file-note">Foto akan dikompres otomatis agar lebih hemat penyimpanan.</div>
+                    <div id="memoryPreview" class="memory-preview"></div>
+                </div>
+
+                <div class="memory-form-actions">
+                    <button class="memories-btn" type="button" data-close-memory-modal>Cancel</button>
+                    <button class="memories-btn primary" type="submit">Save Memory</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- NEW ALBUM -->
+    <div id="memoryAlbumModal" class="memory-modal" aria-hidden="true">
+        <div class="memory-modal-panel" role="dialog" aria-modal="true" aria-labelledby="memoryAlbumTitle">
+            <div class="memory-modal-head">
+                <div>
+                    <div class="memory-modal-kicker">NEW ALBUM</div>
+                    <h2 id="memoryAlbumTitle" class="memory-modal-title">Create an album</h2>
+                </div>
+                <button class="memory-close" type="button" data-close-memory-modal aria-label="Tutup">×</button>
+            </div>
+            <form id="memoryAlbumForm" class="memory-form">
+                <div class="memory-field">
+                    <label for="memoryAlbumName">Album name</label>
+                    <input id="memoryAlbumName" type="text" maxlength="40" required placeholder="Contoh: PKL 2026">
+                </div>
+                <div class="memory-form-actions">
+                    <button class="memories-btn" type="button" data-close-memory-modal>Cancel</button>
+                    <button class="memories-btn primary" type="submit">Create Album</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DETAIL -->
+    <div id="memoryDetailModal" class="memory-modal" aria-hidden="true">
+        <div class="memory-modal-panel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+            <div class="memory-modal-head">
+                <div>
+                    <div class="memory-modal-kicker">MEMORY DETAIL</div>
+                    <h2 id="detailTitle" class="memory-modal-title">Memory</h2>
+                </div>
+                <button class="memory-close" type="button" data-close-memory-modal aria-label="Tutup">×</button>
+            </div>
+            <div id="detailMedia" class="memory-detail-media"></div>
+            <div class="memory-detail-content">
+                <div id="detailMeta" class="memory-detail-meta"></div>
+                <p id="detailDescription" class="memory-detail-description"></p>
+                <div class="memory-detail-actions">
+                    <button id="detailEdit" class="memories-btn primary" type="button">Edit</button>
+                    <button id="detailDelete" class="memories-btn" type="button">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONFIRM DELETE -->
+    <div id="memoryConfirmModal" class="memory-modal" aria-hidden="true">
+        <div class="memory-modal-panel" role="dialog" aria-modal="true" aria-labelledby="confirmDeleteTitle">
+            <div class="memory-modal-head">
+                <div>
+                    <div class="memory-modal-kicker">CONFIRM ACTION</div>
+                    <h2 id="confirmDeleteTitle" class="memory-modal-title">Delete memory?</h2>
+                </div>
+                <button class="memory-close" type="button" data-close-memory-modal aria-label="Tutup">×</button>
+            </div>
+            <p class="memory-confirm-copy">Memory <strong id="confirmDeleteName"></strong> akan dihapus dari perangkat ini.</p>
+            <div class="memory-form-actions">
+                <button class="memories-btn" type="button" data-close-memory-modal>Cancel</button>
+                <button id="confirmDelete" class="memories-btn" type="button">Delete Memory</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="memoryToast" class="memory-toast" role="status" aria-live="polite"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="../js/cloud.js"></script>
+<script src="../js/data.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/skrip.js"></script>
+    <script src="../js/memories.js"></script>
+    <script src="../js/napigasi.js"></script>
+</body>
+
+</html>
