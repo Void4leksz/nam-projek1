@@ -1,0 +1,104 @@
+/* =========================
+   GLOBAL
+========================= */
+
+body {
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: var(--text-md);
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+     padding-bottom: 100px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-5);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+
+    min-height: 44px;
+    padding: 0 var(--space-4);
+
+    border-radius: var(--radius-md);
+
+    transition:
+        background var(--transition-normal),
+        transform var(--transition-fast),
+        opacity var(--transition-normal);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--text-primary);
+}
+
+.btn-primary:hover {
+    background: var(--accent-light);
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+    width: 100%;
+}
+
+/* =========================
+   MODULE SECTION
+========================= */
+
+.module-section {
+    padding-bottom: var(--space-8);
+}
