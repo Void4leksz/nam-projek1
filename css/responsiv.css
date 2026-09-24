@@ -1,0 +1,98 @@
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 600px) {
+
+    .container {
+        padding-left: var(--space-7);
+        padding-right: var(--space-7);
+    }
+
+    .apps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+    }
+
+    .hero-section {
+        padding-top: 72px;
+        padding-bottom: 56px;
+    }
+
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 900px) {
+
+    .container {
+        padding-left: var(--space-8);
+        padding-right: var(--space-8);
+    }
+
+    .apps-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-5);
+    }
+
+    .hero-section {
+        padding-top: 96px;
+        padding-bottom: 72px;
+    }
+
+    .hero-title {
+        max-width: 800px;
+    }
+
+}
+
+/* =========================
+   LARGE DESKTOP
+========================= */
+
+@media (min-width: 1200px) {
+
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .apps-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/* =========================
+   MOBILE HEADER
+========================= */
+
+@media (max-width: 599px) {
+
+    .site-header .container {
+        gap: var(--space-3);
+    }
+
+    .system-status {
+        padding: var(--space-2);
+    }
+
+    .system-status-text {
+        display: none;
+    }
+
+    .system-clock-value {
+        padding-left: 0;
+        border-left: none;
+
+        font-size: 9px;
+    }
+
+    .status-indicator {
+        width: 8px;
+        height: 8px;
+    }
+
+}
