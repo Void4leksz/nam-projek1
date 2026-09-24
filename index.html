@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="N PROJECT - Personal Digital Universe"
+    >
+
+    <title>N PROJECT</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/pariabel.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/komponen.css">
+    <link rel="stylesheet" href="css/napigasi.css">
+    <link rel="stylesheet" href="css/responsiv.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <header class="site-header">
+
+            <div class="container">
+
+                <div class="brand">
+                    <a href="index.html">
+                        <span class="brand-name">N PROJECT</span>
+                        <span class="brand-subtitle">
+                            PERSONAL DIGITAL UNIVERSE
+                        </span>
+                    </a>
+                </div>
+
+                <div class="system-status">
+                     <span class="status-indicator"></span>
+                     <div class="system-status-text">
+                          <span class="system-status-label">
+                               SYSTEM
+                          </span>
+                          <span class="system-status-value">
+                               ONLINE
+                          </span>
+                    </div>
+                     <span class="system-clock-value"
+                           id="systemClock">
+                          --:--
+                     </span>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+
+        <main class="main-content">
+
+            <div class="container">
+
+                <!-- HERO -->
+                <section class="hero-section dashboard-section dashboard-hero">
+
+                    <p class="hero-label">
+                        WELCOME BACK
+                    </p>
+
+                    <h1 class="hero-title">
+                        Your digital world,
+                        <span>in one place.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        A personal space for projects,
+                        memories, knowledge and everything
+                        worth keeping.
+                    </p>
+
+                    <div class="hero-actions" aria-label="Quick actions">
+                        <button type="button" class="hero-action primary" id="openPKLFromHero">
+                            OPEN PKL JOURNAL
+                        </button>
+                        <button type="button" class="hero-action secondary" id="openAppsFromHero">
+                            EXPLORE MODULES
+                        </button>
+                    </div>
+
+                </section>
+
+                <section class="system-pulse dashboard-section" aria-label="System overview">
+                    <div class="system-pulse-header">
+                        <div>
+                            <span class="section-label">SYSTEM PULSE</span>
+                            <h2 class="section-title">Everything is in one view.</h2>
+                        </div>
+                        <span class="system-pulse-dot" aria-hidden="true"></span>
+                    </div>
+                    <div class="system-pulse-grid">
+                        <div class="system-pulse-item">
+                            <span class="system-pulse-label">MODULES</span>
+                            <strong id="moduleStatusSummary">--</strong>
+                        </div>
+                        <div class="system-pulse-item">
+                            <span class="system-pulse-label">JOURNAL</span>
+                            <strong id="journalSummary">--</strong>
+                        </div>
+                        <div class="system-pulse-item">
+                            <span class="system-pulse-label">LATEST ACTIVITY</span>
+                            <strong id="lastActivitySummary">--</strong>
+                        </div>
+                    </div>
+                </section>
+
+                 <!-- ===================
+                       QUICK STATS
+                 ======================= -->
+
+                 <section class="stats-section dashboard-section">
+                      <div class="section-heading">
+                           <p class="section-label"
+                              id="statsLabel">
+                                OVERVIEW
+                           </p>
+                           <h2 class="section-title"
+                               id="statsTitle">
+                                Quick Stats
+                           </h2>
+                      </div>
+
+                      <div class="stats-grid">
+
+                           <div class="ui-card stat-card">
+                                <span class="ui-card-label">
+                                     PROJECTS
+                                </span>
+                                <strong class="stat-value"
+                                        id="projectsCount">
+                                     00
+                                </strong>
+                           </div>
+
+                           <div class="ui-card stat-card">
+                                <span class="ui-card-label">
+                                     JOURNALS
+                                </span>
+                                <strong class="stat-value"
+                                        id="notesCount">
+                                     00
+                                </strong>
+                           </div>
+
+                           <div class="ui-card stat-card">
+                                <span class="ui-card-label">
+                                     PROGRESS
+                                </span>
+                                <strong class="stat-value"
+                                        id="progressValue">
+                                     00%
+                                </strong>
+                           </div>
+
+                           <div class="ui-card stat-card">
+                                <span class="ui-card-label">
+                                     MODULES
+                                </span>
+                                <strong class="stat-value"
+                                        id="moduleCount">
+                                     00
+                                </strong>
+                           </div>
+
+                      </div>
+
+                 </section>
+
+                 <!-- ==============================
+                        RECENT ACTIVITY
+                  ============================== -->
+
+                 <section class="activity-section dashboard-section">
+                      <div class="section-heading">
+                           <p class="section-label"
+                              id="activityLabel">
+                                ACTIVITY
+                           </p>
+                           <h2 class="section-title"
+                               id="activityTitle">
+                                Recent Activity
+                           </h2>
+                      </div>
+
+                      <div class="activity-controls">
+                           <input type="search"
+                                  id="activitySearch"
+                                  class="activity-search"
+                                  placeholder="Search activity..."
+                                  autocomplete="off">
+
+                           <div class="activity-filters">
+                                <button type="button"
+                                        class="activity-filter active"
+                                        data-category="all">
+                                     ALL
+                                </button>
+                                <button type="button"
+                                        class="activity-filter"
+                                        data-category="system">
+                                     SYSTEM
+                                </button>
+                                <button type="button"
+                                        class="activity-filter"
+                                        data-category="project">
+                                     PROJECT
+                                </button>
+                                <button type="button"
+                                        class="activity-filter"
+                                        data-category="memory">
+                                     MEMORY
+                                </button>
+                                <button type="button"
+                                        class="activity-filter"
+                                        data-category="focus">
+                                     FOCUS
+                                </button>
+                           </div>
+                      </div>
+
+                      <div class="activity-list">
+
+                           <div class="ui-card activity-item"
+                                data-activity="project-structure">
+                                <div class="activity-content">
+                                     <span class="activity-title">
+                                          PROJECT STRUCTURE UPDATED
+                                     </span>
+                                     <span class="activity-time">
+                                          Just now
+                                     </span>
+                                </div>
+                           </div>
+
+                           <div class="ui-card activity-item"
+                                data-activity="new-memory">
+                                <div class="activity-content">
+                                     <span class="activity-title">
+                                          NEW MEMORY ADDED
+                                     </span>
+                                     <span class="activity-time">
+                                          Today
+                                     </span>
+                                </div>
+                           </div>
+
+                           <div class="ui-card activity-item"
+                                data-activity="focus-session">
+                                <div class="activity-content">
+                                     <span class="activity-title">
+                                          FOCUS SESSION COMPLETED
+                                     </span>
+                                     <span class="activity-time">
+                                          Earlier today
+                                     </span>
+                                </div>
+                           </div>
+
+                      </div>
+                 </section>
+
+                <!-- APPLICATIONS -->
+                <section class="apps-section dashboard-section" id="appsSection">
+
+                    <div class="section-heading">
+
+                        <p class="section-label">
+                            EXPLORE
+                        </p>
+
+                        <h2 class="section-title">
+                            Your Applications
+                        </h2>
+
+                    </div>
+
+                    <div class="apps-grid">
+
+                        <a
+                            class="app-card"
+                            data-module="life"
+                        >
+                            <span class="app-card-icon"></span>
+                            <span class="app-card-title"></span>
+                            <span class="app-card-description"></span>
+                             <span class="app-card-status status-active"></span>
+                        </a>
+
+                        <a
+                            class="app-card"
+                            data-module="memories"
+                        >
+                            <span class="app-card-icon"></span>
+                            <span class="app-card-title"></span>
+                            <span class="app-card-description"></span>
+                             <span class="app-card-status status-active"></span>
+                        </a>
+
+                        <a
+                            class="app-card"
+                            data-module="developer"
+                        >
+                            <span class="app-card-icon"></span>
+                            <span class="app-card-title"></span>
+                            <span class="app-card-description"></span>
+                             <span class="app-card-status status-active"></span>
+                        </a>
+
+                        <a
+                            class="app-card"
+                            data-module="knowledge"
+                        >
+                            <span class="app-card-icon"></span>
+                            <span class="app-card-title"></span>
+                            <span class="app-card-description"></span>
+                             <span class="app-card-status status-active"></span>
+                        </a>
+
+                        <a
+                            class="app-card"
+                            data-module="gaming"
+                        >
+                            <span class="app-card-icon"></span>
+                            <span class="app-card-title"></span>
+                            <span class="app-card-description"></span>
+                             <span class="app-card-status status-planned"></span>
+                        </a>
+
+                        <a
+                            class="app-card"
+                            data-module="music"
+                        >
+                            <span class="app-card-icon"></span>
+                            <span class="app-card-title"></span>
+                            <span class="app-card-description"></span>
+                             <span class="app-card-status status-planned"></span>
+                        </a>
+
+                        <a
+                            class="app-card"
+                            data-module="achievements"
+                        >
+                            <span class="app-card-icon"></span>
+                            <span class="app-card-title"></span>
+                            <span class="app-card-description"></span>
+                             <span class="app-card-status status-planned"></span>
+                        </a>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+            <section class="pkl-section dashboard-section"
+                     id="pklJournalSection">
+
+                 <div class="section-heading">
+                      <span class="section-label">
+                           PKL JOURNAL
+                      </span>
+                      <h2 class="section-title">
+                           CATATAN KEGIATAN
+                      </h2>
+                 </div>
+                 <section class="pkl-stats">
+                      <div class="pkl-stat-card">
+                           <span class="pkl-stat-label">
+                                TOTAL JURNAL
+                           </span>
+                           <strong id="pklTotalJournal">
+                                0
+                           </strong>
+                      </div>
+                      <div class="pkl-stat-card">
+                           <span class="pkl-stat-label">
+                                TOTAL KEGIATAN
+                           </span>
+                           <strong id="pklTotalActivity">
+                                0
+                           </strong>
+                      </div>
+                      <div class="pkl-stat-card">
+                           <span class="pkl-stat-label">
+                                DOKUMENTASI FOTO
+                           </span>
+                           <strong id="pklTotalPhotos">
+                                0
+                           </strong>
+                      </div>
+                      <div class="pkl-stat-card">
+                           <span class="pkl-stat-label">
+                                JURNAL TERBARU
+                           </span>
+                           <strong id="pklLatestJournal">
+                                0
+                           </strong>
+                      </div>
+                 </section>
+
+                 <button type="button"
+                         class="pkl-add-button"
+                         id="addPKLJournal">
+                      + TAMBAH JURNAL
+                 </button>
+
+                 <div class="pkl-form"
+                      id="pklJournalForm"
+                      hidden>
+
+                      <div class="pkl-form-group">
+                           <label for="pklImage">
+                                FOTO DOKUMENTASI
+                           </label>
+                           <input type="file"
+                                  id="pklImage"
+                                  accept="image/*">
+                           <div class="pkl-image-preview"
+                                id="pklImagePreview"
+                                hidden>
+                                <img id="pklPreviewImage"
+                                     src=""
+                                     alt="Preview foto jurnal PKL">
+                           </div>
+                      </div>
+
+                      <div class="pkl-form-group">
+                           <label for="pklDate">
+                                TANGGAL
+                           </label>
+                           <input type="date"
+                                  id="pklDate">
+                      </div>
+
+                      <div class="pkl-form-group">
+                           <label for="pklCategory">
+                                KATEGORI PEMBELAJARAN
+                           </label>
+                           <select id="pklCategory">
+                                <option value="network">
+                                     NETWORK
+                                </option>
+                                <option value="web-development">
+                                     WEB DEV
+                                </option>
+                                <option value="router">
+                                     ROUTER
+                                </option>
+                                <option value="html">
+                                     HTML
+                                </option>
+                                <option value="css">
+                                     CSS
+                                </option>
+                                <option value="javascript">
+                                     JAVASCRIPT
+                                </option>
+                                <option value="other">
+                                     LAINNYA
+                                </option>
+                           </select>
+                      </div>
+
+                      <div class="pkl-form-group">
+                           <label for="pklTitle">
+                                JUDUL KEGIATAN
+                           </label>
+                           <input type="text"
+                                  id="pklTitle"
+                                  placeholder="Contoh : Setting / Pasang / Dll...">
+                      </div>
+
+                      <div class="pkl-form-group">
+                           <label for="pklActivity">
+                                KEGIATAN
+                           </label>
+                           <textarea rows="4"
+                                     id="pklActivity"
+                                     placeholder="Jelasin kegiatan       yang dilakukan">
+                           </textarea>
+                      </div>
+
+                      <div class="pkl-form-group">
+                           <label for="pklLearning">
+                                PEMBELAJARAN
+                           </label>
+                           <textarea id="pklLearning"
+                                     rows="4"
+                                     placeholder="Apa yang di pelajari">
+                           </textarea>
+                      </div>
+
+                      <div class="pkl-form-actions">
+                           <button type="button"
+                                   class="pkl-cancel-button"
+                                   id="cancelPKLJournal">
+                                BATAL
+                           </button>
+                           <button type="button"
+                                   class="pkl-save-button"
+                                   id="savePKLJournal">
+                                SIMPAN
+                           </button>
+                      </div>
+                 </div>
+
+                 <div class="pkl-search">
+                      <input type="search"
+                             id="pklSearchInput"
+                             placeholder="Cari jurnal..."
+                             autocomplete="off">
+                 </div>
+
+                 <section class="pkl-view-switcher">
+                      <button type="button"
+                              class="pkl-view-card active"
+                              id="pklViewAll">
+                           <span class="pkl-view-icon">
+                                ▦
+                           </span>
+                           <span class="pkl-view-title">
+                                ALL
+                           </span>
+
+                      </button>
+                      <button type="button"
+                              class="pkl-view-card"
+                              id="pklViewFolder">
+                           <span class="pkl-view-icon">
+                                □
+                           </span>
+                           <span class="pkl-view-title">
+                                FOLDER
+                           </span>
+
+                      </button>
+                 </section>
+                 <section class="pkl-folder-panel"
+                          id="pklFolderPanel"
+                          hidden>
+                      <div class="pkl-folder-scroll"
+                           id="pklFolderList">
+                      </div>
+                 </section>
+
+                 <div class="pkl-journal-list">
+                      <article class="ui-card pkl-entry">
+                           <div class="pkl-entry-header">
+                                <span class="pkl-date">
+                                     18 SEPTEMBER 2026
+                                </span>
+                                <span class="pkl-status">
+                                     COMPLETED
+                                </span>
+                           </div>
+                           <h3 class="pkl-title">
+                                Setup Router Ruijie
+                           </h3>
+                           <p class="pkl-activity">
+                                Melakukan setup router Ruijie sesuai arahan.
+                           </p>
+                           <p class="pkl-learning">
+                                Mempelajari konfigurasi router dan jaringan
+                           </p>
+                      </article>
+                 </div>
+
+            </section>
+
+        <section class="pkl-message-overlay"
+                 id="pklMessageModal"
+                 hidden aria-modal="true"
+                 role="dialog"
+                 aria-label="Pesan aplikasi">
+
+             <div class="pkl-message-card">
+                  <h2>
+                       ⚠️ PERHATIAN !
+                  </h2>
+                  <p class="pkl-message-text"></p>
+                  <div class="pkl-message-actions">
+                       <button type="button"
+                            id="pklMessageCancel"
+                            class="pkl-message-cancel">
+                            BATAL
+                       </button>
+                       <button type="button"
+                            id="pklMessageConfirm"
+                            class="pkl-message-confirm">
+                            MENGERTI
+                       </button>
+                  </div>
+             </div>
+        </section>
+        <section class="pkl-detail-overlay"
+                 id="pklJournalDetail"
+                 hidden aria-modal="true"
+                 role="dialog"
+                 aria-label="Detail jurnal PKL">
+            <header class="pkl-detail-toolbar">
+                 <button type="button"
+                         id="closePKLDetail"
+                         class="pkl-detail-back">
+                      ← KEMBALI
+                 </button>
+            </header>
+            <div class="pkl-detail-scroll">
+                 <div class="pkl-detail-image"
+                      hidden>
+
+                 </div>
+                 <div class="pkl-detail-body">
+                      <div class="pkl-detail-meta">
+                           <span class="pkl-detail-date"></span>
+                           <span class="pkl-detail-status"></span>
+                      </div>
+                      <div class="pkl-detail-card">
+                           <div class="pkl-stat-card">
+                                <div class="pkl-detail-strip">
+                                      <h2 class="pkl-detail-title">
+                                      </h2>
+                                </div>
+                                <h3>
+                                     KEGIATAN
+                                </h3>
+                                <p class="pkl-detail-activity"></p>
+                                <h3>
+                                     PEMBELAJARAN
+                                </h3>
+                                <p class="pkl-detail-learning"></p>
+                           </div>
+                      </div>
+                      <button type="button"
+                         id="editPKLJournal"
+                         class="pkl-edit-button">
+                           EDIT JURNAL
+                      </button>
+                      <button type="button"
+                              id="deletePKLJournal"
+                              class="pkl-delete-button">
+                           HAPUS JURNAL
+                      </button>
+
+                 </div>
+
+            </div>
+
+          </section>
+
+        </main>
+
+        <!-- =========================
+             BOTTOM NAVIGATION
+        ========================== -->
+
+        <nav class="bottom-navigation">
+
+            <a
+                href="index.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">⌂</span>
+                <span class="nav-label">Home</span>
+            </a>
+
+            <a
+                href="pages/life.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">◉</span>
+                <span class="nav-label">Life</span>
+            </a>
+
+            <a
+                href="pages/memories.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">▣</span>
+                <span class="nav-label">Memory</span>
+            </a>
+
+            <a
+                href="pages/developer.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">&lt;/&gt;</span>
+                <span class="nav-label">Dev</span>
+            </a>
+
+            <a
+                href="pages/more.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">•••</span>
+                <span class="nav-label">More</span>
+            </a>
+
+        </nav>
+
+    </div>
+
+     <!-- JS -->
+         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="js/cloud.js"></script>
+<script src="js/data.js"></script>
+     <script src="js/storage.js"></script>
+     <script src="js/skrip.js"></script>
+     <script src="js/napigasi.js"></script>
+
+</body>
+</html>
